@@ -1,0 +1,20 @@
+# This file is managed by puppet! Do not change!
+<%= scope.function_template(["activecheck/service/common.conf.erb"]) -%>
+<% if !@pidfile.nil? -%>
+pidfile = <%= @pidfile %>
+<% elsif !@jmx_port.nil? -%>
+url = service:jmx:rmi:///jndi/rmi://<%= (@jmx_host.nil? or @jmx_host.empty?) ? '127.0.0.1' : @jmx_host %>:<%= @jmx_port %>/jmxrmi
+<% end -%>
+
+# define query or operation
+query = <%= @query.rstrip %>
+operation = <%= @is_operation %>
+<% if !@query_arguments.empty? -%>
+arguments = <%= @query_arguments.join(' ') %>
+<% end -%>
+
+<% if !@jmx_username.nil? and !@jmx_password.nil? -%>
+# configure jmx credentials
+jmx.username = <%= @jmx_username %>
+jmx.password = <%= @jmx_password %>
+<% end -%>

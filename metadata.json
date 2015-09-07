@@ -1,0 +1,56 @@
+{
+  "author": "frederikhappel",
+  "dependencies": [
+    {
+      "name": "puppetlabs-stdlib",
+      "version_requirement": "4.8.0-frederikhappel"
+    }, {
+      "name": "frederikhappel-shorewall",
+      "version_requirement": "> 0.0.0"
+    }, {
+      "name": "frederikhappel-nagioscollector",
+      "version_requirement": "> 0.0.0"
+    }, {
+      "name": "frederikhappel-monit",
+      "version_requirement": "> 0.0.0"
+    }
+  ],
+  "license": "GPL v3",
+  "name": "frederikhappel-activecheck",
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "5",
+        "6"
+      ]
+    },
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "5",
+        "6"
+      ]
+    },
+    {
+      "operatingsystem": "OracleLinux",
+      "operatingsystemrelease": [
+        "5",
+        "6"
+      ]
+    },
+    {
+      "operatingsystem": "Scientific",
+      "operatingsystemrelease": [
+        "5",
+        "6"
+      ]
+    }
+  ],
+  "project_page": "",
+  "requirements": [],
+  "source": "https://github.com/frederikhappel/puppet-activecheck",
+  "summary": "Puppet module to manage Activecheck service and resources",
+  "tags": [],
+  "version": "0.1.0"
+}

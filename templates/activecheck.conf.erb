@@ -1,0 +1,29 @@
+# This file is managed by puppet! Do not change!
+worker = <%= @worker %>
+reload_interval = <%= @reload_interval_in_seconds %>
+hostcheck_interval = <%= @hostcheck_interval_in_seconds %>
+check_interval = <%= @servicecheck_interval_in_seconds %>
+plugindir = <%= @plugindir %>
+includedir = <%= @cfgddir %>
+pidfile = <%= @pidfile %>
+monitorjar = <%= @monitorjar %>
+
+# configure nrpe settings
+nrpe_host = <%= @nrpe_host %>
+nrpe_port = <%= @nrpe_port %>
+nrpe_ssl = true
+nrpe_timeout = <%= @nrpe_timeout_in_seconds %>
+
+<% if !@jmx_username.nil? and !@jmx_password.nil? -%>
+# configure jmx credentials
+jmx.username = <%= @jmx_username %>
+jmx.password = <%= @jmx_password %>
+<% end -%>
+
+# configure report routing
+report_results = <%= @report_results %>
+graph_results = <%= @graph_results %>
+graph_perfdata = <%= @graph_perfdata %>
+
+# configure nsca proxy?
+nsca_proxy = <%= @nsca_proxy %>

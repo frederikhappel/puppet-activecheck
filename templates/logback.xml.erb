@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="<%= @reload_interval_in_seconds %> seconds">
+  <jmxConfigurator />
+
+  <appender name="STDERR" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{0} - %msg%n</pattern>
+    </encoder>
+    <target>System.err</target>
+  </appender>
+
+<% if !@loghost.nil? -%>
+  <appender name="GelfAppender" class="me.moocar.logbackgelf.GelfAppender">
+    <facility>activecheck</facility>
+    <graylog2ServerHost><%= @loghost %></graylog2ServerHost>
+    <graylog2ServerPort><%= @loghost_port %></graylog2ServerPort>
+    <useLoggerName>true</useLoggerName>
+    <useThreadName>true</useThreadName>
+    <chunkThreshold>1000</chunkThreshold>
+    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+      <level>WARN</level>
+    </filter>
+  </appender>
+<% end -%>
+
+  <root level="<%= @logger %>" additivity="false">
+<% if @logtofile or @loghost.nil? -%>
+    <appender-ref ref="STDERR" />
+<% end -%>
+<% if !@loghost.nil? -%>
+    <appender-ref ref="GelfAppender" />
+<% end -%>
+  </root>
+</configuration>

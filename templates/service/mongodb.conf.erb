@@ -1,0 +1,36 @@
+# This file is managed by puppet! Do not change!
+<%= scope.function_template(["activecheck/service/common.conf.erb"]) -%>
+<% if !@socket.nil? -%>
+socket = <%= @socket %>
+<% elsif !@url.nil? -%>
+url = <%= @url %>
+<% end -%>
+
+# define query or stats operation
+<% if !@stats.empty? -%>
+stats = <%= @stats.join(',') %>
+<% else -%>
+<% if !@query_where.nil? -%>
+query_where = <%= @query_where %>
+<% end -%>
+<% if !@query_fields.nil? -%>
+query_fields = <%= @query_fields %>
+<% end -%>
+<% end -%>
+
+<% if !@databases.empty? -%>
+# query special databases only
+databases = <%= @databases.join(',') %>
+<% end -%>
+<% if !@databases_exclude.empty? -%>
+databases_exclude = <%= @databases_exclude.join(',') %>
+<% end -%>
+
+<% if !@warning.nil? -%>
+# set warning threshold
+warning = <%= @warning %>
+<% end -%>
+<% if !@critical.nil? -%>
+# set critical threshold
+critical = <%= @critical %>
+<% end -%>

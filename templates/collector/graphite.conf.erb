@@ -1,0 +1,4 @@
+# This file is managed by puppet! Do not change!
+<%= scope.function_template(["activecheck/collector/common.conf.erb"]) -%>
+graphite_prefix = <%= @prefix %>
+graphite_interval = <%= @interval_in_seconds %>

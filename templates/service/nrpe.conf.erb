@@ -1,0 +1,9 @@
+# This file is managed by puppet! Do not change!
+<%= scope.function_template(["activecheck/service/common.conf.erb"]) -%>
+command = <%= @check_command %>
+<% if !@check_arguments.empty? -%>
+arguments = <%= @check_arguments.join('!').gsub(/,/, '\,') %>
+<% end -%>
+<% if !@check_timeout_in_seconds.nil? -%>
+nrpe_timeout = <%= @check_timeout_in_seconds %>
+<% end -%>

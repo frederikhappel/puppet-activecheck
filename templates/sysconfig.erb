@@ -1,0 +1,4 @@
+# This file is managed by puppet! Do not change!
+JVM_OPTIONS="-Xms<%= @xmx_in_mb.to_i > @xms_in_mb.to_i ? @xms_in_mb : @xmx_in_mb %>M -Xmx<%= @xmx_in_mb %>M"
+JVM_JMXPORT=<%= @jmx_port %>
+JMX_ENABLED=<%= !@jmx_remote.empty? %>

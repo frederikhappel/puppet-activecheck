@@ -1,0 +1,9 @@
+# This file is managed by puppet! Do not change!
+<%= scope.function_template(["activecheck/service/common.conf.erb"]) -%>
+url = <%= @url %>
+
+<% if !@api_username.nil? and !@api_password.nil? -%>
+# configure graylog2 api credentials
+graylog2.username = <%= @api_username %>
+graylog2.password = <%= @api_password %>
+<% end -%>

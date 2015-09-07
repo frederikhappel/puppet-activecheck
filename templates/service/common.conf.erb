@@ -1,0 +1,30 @@
+# included from template activecheck/service/common.conf.erb
+class = <%= @plugin_class %>
+servicename = <%= @service_description %>
+<% if !@service_host.nil? -%>
+servicehost = <%= @service_host %>
+<% end -%>
+<% if @check_interval_in_seconds.to_i > 0 -%>
+check_interval = <%= @check_interval_in_seconds %>
+<% if @retry_interval_in_seconds.to_i > 0 -%>
+retry_interval = <%= @retry_interval_in_seconds %>
+<% end -%>
+<% end -%>
+max_errors = <%= @max_errors %>
+
+# configure report routing
+<% if !@report_results.nil? -%>
+report_results = <%= @report_results %>
+<% end -%>
+<% if !@graph_results.nil? -%>
+graph_results = <%= @graph_results %>
+<% end -%>
+<% if !@graph_perfdata.nil? -%>
+graph_perfdata = <%= @graph_perfdata %>
+<% end -%>
+<% if !@fixit.empty? -%>
+# configure fixit
+<% @fixit.each do |status, command| -%>
+fixit_<%= status %> = <%= command %>
+<% end -%>
+<% end -%>
